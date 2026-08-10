@@ -207,8 +207,8 @@
   #detailContent{ flex:1; min-height:0; display:none; flex-direction:column; }
   .detail-body{ display:flex; flex:1; min-height:0; }
   .detail-media{ flex:1.5; overflow:auto; padding:16px; }
-  .detail-side{ flex:1; border-left:1px solid var(--line); padding:16px; overflow:auto; display:flex; flex-direction:column; }
-  .detail-side .desc{ flex:1; }
+  .detail-side{ flex:1; border-left:1px solid var(--line); padding:16px; overflow:auto; -webkit-overflow-scrolling:touch; }
+  .detail-side .desc{ width:100%; min-height:240px; resize:vertical; }
   .detail-media .gallery{ margin-top:14px; }
 
   /* 移动端 */

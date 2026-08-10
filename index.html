@@ -215,11 +215,12 @@
   @media(max-width:768px){
     .main{grid-template-columns:1fr}
     .timeline{max-height:none}
-    .detail-panel{ top:auto; left:0; bottom:0; width:100vw; height:100vh; height:100dvh; border-radius:0; transform:translateY(100%); }
+    .detail-panel{ top:auto; left:0; bottom:0; width:100vw; height:100vh; height:100dvh; border-radius:0; transform:translateY(100%); overflow:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; }
     .detail-panel.show{ transform:translateY(0); }
-    .detail-body{ flex-direction:column; }
-    .detail-media{ flex:none; max-height:42vh; }
-    .detail-side{ border-left:none; border-top:1px solid var(--line); flex:1; }
+    #detailContent{ flex:none; }
+    .detail-body{ flex-direction:column; flex:none; min-height:0; }
+    .detail-media{ flex:none; max-height:none; overflow:visible; }
+    .detail-side{ border-left:none; border-top:1px solid var(--line); flex:none; overflow:visible; min-height:0; }
     .top-actions .btn span{display:none}
     .top-actions .btn{min-width:44px;padding:0 12px}
     .wrap{padding:12px 12px 90px}

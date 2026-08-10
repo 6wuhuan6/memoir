@@ -242,8 +242,10 @@
   .shared-view #btnImport,
   .shared-view #btnClear,
   .shared-view #btnExport{ display:none !important; }
-  .shared-view #dTitle,
-  .shared-view #dDesc{ pointer-events:none; background:#f5f6f8; color:#374151; border-color:transparent; resize:none; }
+  .shared-view #dTitle{ pointer-events:none; background:#f5f6f8; color:#374151; border-color:transparent; }
+  .shared-view .detail-side .desc{ display:none; }
+  .shared-view .detail-side .desc-view{ display:block; background:#f5f6f8; border-radius:6px; padding:10px; min-height:60px; white-space:pre-wrap; word-break:break-word; font-size:14px; line-height:1.7; color:#374151; }
+  .shared-view .detail-side .desc-view.empty::before{ content:'这一天还没有文字描述'; color:#9aa3af; }
   .shared-view .detail-bar-tip::after{ content:' · 只读分享'; color:#9aa3af; font-size:12px; }
 </style>
 </head>
@@ -314,6 +316,7 @@
         <div class="detail-side">
           <div class="desc-label">这一天发生了什么</div>
           <textarea class="desc" id="dDesc" placeholder="写下你对这一天的回忆与描述……"></textarea>
+          <div class="desc-view" id="dDescView"></div>
           <div class="saved-tip" id="savedTip"></div>
         </div>
       </div>
@@ -557,6 +560,7 @@ async function selectEntry(id){
   document.getElementById('dCount').textContent=`${e.media?e.media.length:0} 个回忆`;
   document.getElementById('dTitle').value=e.title||'';
   document.getElementById('dDesc').value=e.description||'';
+  const dv=document.getElementById('dDescView'); dv.textContent=e.description||''; dv.classList.toggle('empty',!(e.description||'').trim());
   document.getElementById('savedTip').textContent='';
   const gal=document.getElementById('dGallery'); gal.innerHTML='';
   if(e.media&&e.media.length){
